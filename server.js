@@ -19,8 +19,11 @@ function(req, res) {
 app.get('/stream', 
 function(req, res) {
   var link = req.params.link;
+  console.log(link);
   var key = req.params.key;
+  console.log(key);
   var cmd = "bash stream.sh " + key + " " + link;
+  console.log(cmd);
   exec(cmd, puts);
   res.render('index');
 });
