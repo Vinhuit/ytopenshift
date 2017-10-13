@@ -1,22 +1,9 @@
 var express = require('express');
 var partials = require('express-partials');
 var app = express();
-var port = process.env.PORT || 8080;
+var port = process.env.PORT || 4000;
 var sys = require('sys')
 var exec = require('child_process').exec;
-
-var youtubedl = require('youtube-dl');
-var video = youtubedl('http://www.youtube.com/watch?v=90AiXO1pAiA',
-  // Optional arguments passed to youtube-dl.
-  ['--format=18'],
-  // Additional options can be given for calling `child_process.execFile()`.
-  { cwd: __dirname });
-video.on('info', function(info) {
-  console.log('Download started');
-  console.log('filename: ' + info.filename);
-  console.log('size: ' + info.size);
-});
-video.pipe(fs.createWriteStream('views/input.mp4'));
 function puts(error, stdout, stderr) { sys.puts(stdout) }
 
 app.set('views', __dirname + '/views');
@@ -31,7 +18,7 @@ function(req, res) {
 });
 app.get('/host', 
 function(req, res) {
-  exec("sh ../stream.sh ", puts);
+  exec("bash stream.sh 468 https://www.youtube.com/watch?v=mn1nWOOMH9E", puts);
 });
 app.get('/view', 
 function(req, res) {
