@@ -16,6 +16,14 @@ app.get('/',
 function(req, res) {
   res.render('index');
 });
+app.get('/stream', 
+function(req, res) {
+  var link = req.params.link;
+  var key = req.params.key;
+  var cmd = "bash stream.sh " + key + " " + link;
+  exec(cmd, puts);
+  res.render('index');
+});
 app.get('/host', 
 function(req, res) {
   exec("bash stream.sh 468 https://www.youtube.com/watch?v=mn1nWOOMH9E", puts);
