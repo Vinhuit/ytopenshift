@@ -18,14 +18,16 @@ function(req, res) {
 });
 app.get('/stream', 
 function(req, res) {
-  var link = req.params.link;
-  console.log(link);
-  var key = req.params.key;
-  console.log(key);
-  var cmd = "bash stream.sh " + key + " " + link;
+  var link = req.query.link;
+  var key = req.query.key;
+  var cmd = "bash stream.sh " + key + " " + link +" 2>&1 | tee log.txt";
   console.log(cmd);
   exec(cmd, puts);
-  res.render('index');
+});
+app.get('/streamoff',
+function(req, res) {
+  var cmd = "pkill ffmpeg";
+  exec(cmd, puts);
 });
 app.get('/host', 
 function(req, res) {
