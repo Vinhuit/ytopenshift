@@ -23,10 +23,16 @@ app.get('/stream',
 function(req, res) {
   var link = req.query.link;
   var key = req.query.key;
+  const args = [
+        "-",
+        key, // use stdin
+        link,
+        "-",
+    ];
   var cmd = "bash stream.sh " + key + " " + link +"";
   console.log(cmd);
   console.log("Đã Live Tắt trinh duyệt đi !! chờ tầm 3,4 p tự Live");
-  spawn(cmd,"");
+  spawn('stream.sh',args);
  // exec(cmd, puts);
 });
 app.get('/streamoff',
