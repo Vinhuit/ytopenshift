@@ -6,7 +6,7 @@ var sys = require('sys')
 var exec = require('child_process').exec;
 function puts(error, stdout, stderr) { sys.puts(stdout) }
 
-var execFile = require('child_process').execFile;
+var execSync = require('child_process').execSync;
 
 
 app.set('views', __dirname + '/views');
@@ -26,7 +26,7 @@ function(req, res) {
   var cmd = "bash stream.sh " + key + " " + link +"";
   console.log(cmd);
   console.log("Đã Live Tắt trinh duyệt đi !! chờ tầm 3,4 p tự Live");
-  execFile(cmd,puts);
+  execSync(cmd,puts);
  // exec(cmd, puts);
 });
 app.get('/streamoff',
