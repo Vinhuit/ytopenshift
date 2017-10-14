@@ -29,9 +29,7 @@ function(req, res) {
   console.log("Đã Live Tắt trinh duyệt đi !! chờ tầm 3,4 p tự Live");
  // execSync(cmd,puts);
   spawn('stream.sh',[key, link]);
-  spawn.stdout.on('data', (data) => {
-  console.log(`stdout: ${data}`);
-});
+
  // exec(cmd, puts);
 });
 app.get('/streamoff',
