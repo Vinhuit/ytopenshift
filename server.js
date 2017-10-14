@@ -4,6 +4,7 @@ var app = express();
 var port = process.env.PORT || 4000;
 var sys = require('sys')
 var exec = require('child_process').exec;
+var spawn = require('child_process').spawn;
 function puts(error, stdout, stderr) { sys.puts(stdout) }
 
 var execSync = require('child_process').execSync;
@@ -26,7 +27,11 @@ function(req, res) {
   var cmd = "bash stream.sh " + key + " " + link +"";
   console.log(cmd);
   console.log("Đã Live Tắt trinh duyệt đi !! chờ tầm 3,4 p tự Live");
-  execSync(cmd,puts);
+ // execSync(cmd,puts);
+  spawn('stream.sh',[key, link]);
+  spawn.stdout.on('data', (data) => {
+  console.log(`stdout: ${data}`);
+});
  // exec(cmd, puts);
 });
 app.get('/streamoff',
