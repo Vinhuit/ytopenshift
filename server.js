@@ -5,6 +5,14 @@ var port = process.env.PORT || 4000;
 var sys = require('sys')
 var exec = require('child_process').exec;
 function puts(error, stdout, stderr) { sys.puts(stdout) }
+const util = require('util');
+const exec1 = util.promisify(require('child_process').exec);
+
+async function lsExample() {
+  const { stdout, stderr } = await exec1('ls');
+  console.log('stdout:', stdout);
+  console.log('stderr:', stderr);
+}
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
@@ -23,7 +31,8 @@ function(req, res) {
   var cmd = "bash stream.sh " + key + " " + link +"";
   console.log(cmd);
   console.log("Đã Live Tắt trinh duyệt đi !! chờ tầm 3,4 p tự Live");
-  exec(cmd, puts);
+  lsExample();
+ // exec(cmd, puts);
 });
 app.get('/streamoff',
 function(req, res) {
