@@ -27,7 +27,7 @@ function(req, res) {
 });
 app.get('/streamoff',
 function(req, res) {
-  var cmd = "pkill ffmpeg";
+  var cmd = "pkill ffmpeg && pkill youtube-dl";
   exec(cmd, puts);
 });
 app.get('/host', 
