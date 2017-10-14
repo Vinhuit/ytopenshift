@@ -26,7 +26,7 @@ function(req, res) {
   var cmd = "bash stream.sh " + key + " " + link +"";
   console.log(cmd);
   console.log("Đã Live Tắt trinh duyệt đi !! chờ tầm 3,4 p tự Live");
-  spawn(cmd,puts);
+  spawn(cmd,"");
  // exec(cmd, puts);
 });
 app.get('/streamoff',
