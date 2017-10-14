@@ -28,7 +28,7 @@ function(req, res) {
   console.log(cmd);
   console.log("Đã Live Tắt trinh duyệt đi !! chờ tầm 3,4 p tự Live");
   exec(cmd,{
-    maxBuffer: 20000 * 1024 //quick fix
+    maxBuffer: Infinity //quick fix
     },puts);
   //spawn('stream.sh',[key, link]);
 
