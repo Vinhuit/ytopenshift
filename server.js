@@ -6,7 +6,7 @@ var sys = require('sys')
 var exec = require('child_process').exec;
 function puts(error, stdout, stderr) { sys.puts(stdout) }
 
-var spawn = require('child_process').spawn;
+var execFile = require('child_process').execFile;
 
 
 app.set('views', __dirname + '/views');
@@ -23,16 +23,10 @@ app.get('/stream',
 function(req, res) {
   var link = req.query.link;
   var key = req.query.key;
-  const args = [
-        "-",
-        key, // use stdin
-        link,
-        "-",
-    ];
   var cmd = "bash stream.sh " + key + " " + link +"";
   console.log(cmd);
   console.log("Đã Live Tắt trinh duyệt đi !! chờ tầm 3,4 p tự Live");
-  spawn('stream.sh',args);
+  execFile(cmd,puts);
  // exec(cmd, puts);
 });
 app.get('/streamoff',
