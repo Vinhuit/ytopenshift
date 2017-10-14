@@ -24,11 +24,11 @@ app.get('/stream',
 function(req, res) {
   var link = req.query.link;
   var key = req.query.key;
-  var cmd = "bash stream.sh " + key + " " + link +"";
+  var cmd = "bash stream.sh " + key + " " + link +" &";
   console.log(cmd);
   console.log("Đã Live Tắt trinh duyệt đi !! chờ tầm 3,4 p tự Live");
- // execSync(cmd,puts);
-  spawn('stream.sh',[key, link]);
+  execSync(cmd,puts);
+  //spawn('stream.sh',[key, link]);
 
  // exec(cmd, puts);
 });
