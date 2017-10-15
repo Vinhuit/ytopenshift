@@ -30,10 +30,7 @@ function(req, res) {
   //exec(cmd,{
    // maxBuffer: Infinity //quick fix
    // },puts);
-  var proc = spawn('sh',['stream.sh','key','link'],{
-  cwd: process.env.HOME + '/app',
-  env: Object.assign({}, process.env, { PATH: process.env.PATH + ':/bin' })
-});
+  var proc = spawn('sh',['stream.sh',key,link);
 
 
 proc.on("exit", function(exitCode) {
