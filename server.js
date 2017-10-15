@@ -27,10 +27,10 @@ function(req, res) {
   var cmd = "bash stream.sh " + key + " " + link +"";
   console.log(cmd);
   console.log("Đã Live Tắt trinh duyệt đi !! chờ tầm 3,4 p tự Live");
-  exec(cmd,{
-    maxBuffer: Infinity //quick fix
-    },puts);
-  //spawn('stream.sh',[key, link]);
+  //exec(cmd,{
+   // maxBuffer: Infinity //quick fix
+   // },puts);
+  spawn('bash',['stream.sh','key','link',]);
 
  // exec(cmd, puts);
 });
