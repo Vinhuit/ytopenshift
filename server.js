@@ -32,7 +32,7 @@ function(req, res) {
    // },puts);
   var proc = spawn('sh',['stream.sh','key','link'],{
   cwd: process.env.HOME + '/app',
-  env: Object.assign({}, process.env, { PATH: process.env.PATH + ':/usr/local/bin' })
+  env: Object.assign({}, process.env, { PATH: process.env.PATH + ':/bin' })
 });
 
 
