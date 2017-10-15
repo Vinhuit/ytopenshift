@@ -30,8 +30,19 @@ function(req, res) {
   //exec(cmd,{
    // maxBuffer: Infinity //quick fix
    // },puts);
-  spawn('bash',['stream.sh','key','link',]);
+  var proc = spawn('bash',['stream.sh','key','link',]);
 
+proc.on("exit", function(exitCode) {
+    console.log('process exited with code ' + exitCode);
+});
+
+proc.stdout.on("data", function(chunk) {
+    console.log('received chunk ' + chunk);
+});
+
+proc.stdout.on("end", function() {
+    console.log("finished collecting data chunks from stdout");
+});
  // exec(cmd, puts);
 });
 app.get('/streamoff',
