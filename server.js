@@ -23,17 +23,17 @@ app.get('/stream',
 function(req, res) {
   var link = req.query.link;
   var key = req.query.key;
-  var cmd = "bash stream.sh " + key + " " + link +"";
+  var cmd = "bash stream.sh " + key + " " + link +">/dev/null";
   console.log(cmd);
   console.log("Đã Live Tắt trinh duyệt đi !! chờ tầm 3,4 p tự Live");
-  //exec(cmd,{
-   // maxBuffer: Infinity //quick fix
-   // },puts);
+  exec(cmd,{
+    maxBuffer: 1024*1024 //quick fix
+    },puts);
 //execa('sh',['stream.sh',key,link]).then(result => {
 //	console.log(result.stdout);
 	//=> 'unicorns'
 //});
-  var proc = spawn('sh',['stream.sh',key,link,"&"]);
+  //var proc = spawn('sh',['stream.sh',key,link,"&"]);
 //spawn('sh',['stream.sh',key,link]);
 //console.log('stdout here: \n' + proc.stdout);
  // exec(cmd, puts);
