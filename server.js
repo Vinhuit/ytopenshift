@@ -8,7 +8,10 @@ var spawn = require('child_process').spawnSync;
 function puts(error, stdout, stderr) { sys.puts(stdout) }
 
 var execSync = require('child_process').execSync;
-
+var http = require("http");
+setInterval(function() {
+    http.get("apiytapi.herokuapp.com");
+}, 300000); // every 5 minutes (300000)
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
