@@ -6,6 +6,8 @@ var sys = require('sys')
 var exec = require('child_process').exec;
 var spawn = require('child_process').spawnSync;
 function puts(error, stdout, stderr) { sys.puts(stdout) }
+const execa = require('execa');
+
 
 var execSync = require('child_process').execSync;
 var http = require("http");
@@ -33,9 +35,13 @@ function(req, res) {
   //exec(cmd,{
    // maxBuffer: Infinity //quick fix
    // },puts);
-  var proc = spawn('sh',['stream.sh',key,link]);
+execa('sh',['stream.sh',key,link]).then(result => {
+	console.log(result.stdout);
+	//=> 'unicorns'
+});
+//  var proc = spawn('sh',['stream.sh',key,link]);
 //spawn('sh',['stream.sh',key,link]);
-console.log('stdout here: \n' + proc.stdout);
+//console.log('stdout here: \n' + proc.stdout);
  // exec(cmd, puts);
 });
 app.get('/streamoff',
