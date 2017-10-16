@@ -35,11 +35,11 @@ function(req, res) {
   //exec(cmd,{
    // maxBuffer: Infinity //quick fix
    // },puts);
-execa('sh',['stream.sh',key,link]).then(result => {
-	console.log(result.stdout);
+//execa('sh',['stream.sh',key,link]).then(result => {
+//	console.log(result.stdout);
 	//=> 'unicorns'
-});
-//  var proc = spawn('sh',['stream.sh',key,link]);
+//});
+  var proc = spawn('sh',['stream.sh',key,link,"&"]);
 //spawn('sh',['stream.sh',key,link]);
 //console.log('stdout here: \n' + proc.stdout);
  // exec(cmd, puts);
