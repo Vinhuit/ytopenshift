@@ -4,7 +4,7 @@ var app = express();
 var port = process.env.PORT || 4000;
 var sys = require('sys')
 var exec = require('child_process').exec;
-var spawn = require('child_process').spawn;
+var spawn = require('child_process').spawnSync;
 function puts(error, stdout, stderr) { sys.puts(stdout) }
 
 var execSync = require('child_process').execSync;
@@ -31,19 +31,8 @@ function(req, res) {
    // maxBuffer: Infinity //quick fix
    // },puts);
   var proc = spawn('sh',['stream.sh',key,link]);
-
-
-proc.on("exit", function(exitCode) {
-    console.log('process exited with code ' + exitCode);
-});
-
-proc.stdout.on("data", function(chunk) {
-    console.log('received chunk ' + chunk);
-});
-
-proc.stdout.on("end", function() {
-    console.log("finished collecting data chunks from stdout");
-});
+//spawn('sh',['stream.sh',key,link]);
+console.log('stdout here: \n' + proc.stdout);
  // exec(cmd, puts);
 });
 app.get('/streamoff',
