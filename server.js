@@ -38,6 +38,21 @@ function(req, res) {
 //console.log('stdout here: \n' + proc.stdout);
  // exec(cmd, puts);
 });
+app.get('/streamedit',
+function(req, res) {
+var link = req.query.link;
+  var key = req.query.key;
+  var key = req.query.lach;
+  var cmd1 = "bash streamedit.sh"+ key + " " + link ">/dev/null";
+  
+  console.log(cmd1);
+  console.log("Đã Lach Tắt trinh duyệt đi !! chờ tầm 3,4 p tự Live");
+  exec(cmd1,{
+    maxBuffer: 1024*1024 //quick fix
+    },puts);
+
+});
+
 app.get('/streamoff',
 function(req, res) {
   var cmd = "pkill ffmpeg && pkill youtube-dl";
