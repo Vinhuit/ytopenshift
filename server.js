@@ -53,7 +53,7 @@ var link = req.query.link;
 
 app.get('/streamoff',
 function(req, res) {
-  var cmd = "pkill ffmpeg && pkill youtube-dl";
+  var cmd = "pkill ffmpeg && pkill youtube-dl && pkill stream.sh";
   exec(cmd, puts);
 });
 app.get('/host', 
