@@ -50,6 +50,18 @@ var link = req.query.link;
     },puts);
 
 });
+app.get('/custom',
+function(req, res) {
+var link = req.query.link;
+  var key = req.query.key;
+  var lach = req.query.lach;
+ var cmd1 = "bash" + key + " " + link +">/dev/null";  
+  console.log("Đã Lach Tắt trinh duyệt đi !! chờ tầm 3,4 p tự Live");
+  exec(cmd1,{
+    maxBuffer: 1024*1024 //quick fix
+    },puts);
+
+});
 
 app.get('/streamoff',
 function(req, res) {
