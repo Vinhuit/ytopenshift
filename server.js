@@ -1,7 +1,8 @@
 var express = require('express');
 var partials = require('express-partials');
 var app = express();
-var port = process.env.PORT || 4000;
+var server_port = process.env.OPENSHIFT_NODEJS_PORT || 8080
+var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1'
 var sys = require('sys')
 var exec = require('child_process').exec;
 var spawn = require('child_process').spawnSync;
@@ -77,5 +78,7 @@ function(req, res) {
   res.render('view');
 });
 
-app.listen(port);
-console.log('Server is listening on ' + port);
+
+app.listen(server_port, server_ip_address, function () {
+  console.log( "Listening on " + server_ip_address + ", port " + server_port )
+});
