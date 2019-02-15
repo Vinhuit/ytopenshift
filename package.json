@@ -16,6 +16,10 @@
     "url": "https://github.com/seewes/youtube-live/issues"
   },
   "homepage": "https://github.com/seewes/youtube-live",
+  "engine": {
+    "node": "*",
+    "npm": "*"
+  },
   "dependencies": {
     "ejs": "^1.0.0",
     "execa": "^0.8.0",
